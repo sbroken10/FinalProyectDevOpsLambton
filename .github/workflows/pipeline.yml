@@ -1,13 +1,18 @@
 name: CI Pipeline
-on: [push]
+
+on: 
+  push:
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Run simulated tests
         run: echo "Tests passed"
+
       - name: OWASP Dependency Check
         uses: dependency-check/Dependency-Check_Action@main
         with:
@@ -15,8 +20,9 @@ jobs:
           path: "."
           format: "HTML"
           out: "reports"
+
       - name: Upload Dependency-Check report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dependency-check-report
           path: reports
