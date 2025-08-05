@@ -13,3 +13,5 @@ jobs:
         with:
           project: "DemoApp"
           path: "."
+          format: "HTML"
+          out: "reports"
